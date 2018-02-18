@@ -1,0 +1,1 @@
+W tym miejscu s¹ tworzone logi z dzia³ania aplikacji.
