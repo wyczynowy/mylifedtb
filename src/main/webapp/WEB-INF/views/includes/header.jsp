@@ -71,6 +71,9 @@
 			  </ul>
 			</li>
 	      <li><a href="${pageContext.request.contextPath}/mysql/">MySQL</a></li>
+   			<security:authorize access="hasRole('ROLE_SUPERADMIN')">	
+				<li><a href="${pageContext.request.contextPath}/additional/">Dodatkowe</a></li>	
+			</security:authorize>
 	    </ul>
 	  </div>
 	</nav>

@@ -12,6 +12,19 @@ CREATE TABLE IF NOT EXISTS `microprocessor_advice` (
   PRIMARY KEY (`ADVICE_ID`)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci COMMENT='Contains information about microprocessor advices';
 
+# Dumping structure for table my_life_dtb.microprocessor_advices_attachments
+DROP TABLE IF EXISTS `microprocessor_advices_attachments`;
+CREATE TABLE IF NOT EXISTS `microprocessor_advices_attachments` (
+	`id` int(10) NOT NULL AUTO_INCREMENT,
+	`file_name` varchar(500) NOT NULL,
+	`microprocessor_advice_id` int(10) NOT NULL,
+	PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci COMMENT='Contains information about microprocessor_advices_attachments';
+
+# Creating foreign key for tab my_life_dtb.microprocessor_advices_attachments.microprocessor_advice_id -> my_life_dtb.microprocessor_advice.ADVICE_ID
+alter table microprocessor_advices_attachments
+add constraint microprocessor_advice_id_ADVICE_ID_fk foreign key(microprocessor_advice_id) references microprocessor_advice(ADVICE_ID);
+
 # Dumping structure for table myapp.electronicsGeneralAdvice
 DROP TABLE IF EXISTS `electronics_general_advice`;
 CREATE TABLE IF NOT EXISTS `electronics_general_advice` (
@@ -20,6 +33,19 @@ CREATE TABLE IF NOT EXISTS `electronics_general_advice` (
   `ADVICE_DESCRIPTION` text NOT NULL,
   PRIMARY KEY (`ADVICE_ID`)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci COMMENT='Contains information about electronics_general_advices';
+
+# Dumping structure for table my_life_dtb.electronics_general_advices_attachments
+DROP TABLE IF EXISTS `electronics_general_advices_attachments`;
+CREATE TABLE IF NOT EXISTS `electronics_general_advices_attachments` (
+	`id` int(10) NOT NULL AUTO_INCREMENT,
+	`file_name` varchar(500) NOT NULL,
+	`electronics_general_advice_id` int(10) NOT NULL,
+	PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci COMMENT='Contains information about electronics_general_advices_attachments';
+
+# Creating foreign key for tab my_life_dtb.electronics_general_advices_attachments.electronics_general_advice_id -> my_life_dtb.electronics_general_advice.ADVICE_ID
+alter table electronics_general_advices_attachments
+add constraint electronics_general_advice_id_ADVICE_ID_fk foreign key(electronics_general_advice_id) references electronics_general_advice(ADVICE_ID);
 
 # Dumping structure for table myapp.mySqlAdvice
 DROP TABLE IF EXISTS `my_sql_advice`;
@@ -30,6 +56,19 @@ CREATE TABLE IF NOT EXISTS `my_sql_advice` (
   PRIMARY KEY (`ADVICE_ID`)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci COMMENT='Contains information about my_sql_advices';
 
+# Dumping structure for table my_life_dtb.my_sql_advices_attachments
+DROP TABLE IF EXISTS `my_sql_advices_attachments`;
+CREATE TABLE IF NOT EXISTS `my_sql_advices_attachments` (
+	`id` int(10) NOT NULL AUTO_INCREMENT,
+	`file_name` varchar(500) NOT NULL,
+	`my_sql_advice_id` int(10) NOT NULL,
+	PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci COMMENT='Contains information about my_sql_advices_attachments';
+
+# Creating foreign key for tab my_life_dtb.my_sql_advices_attachments.my_sql_advice_id -> my_life_dtb.my_sql_advice.ADVICE_ID
+alter table my_sql_advices_attachments
+add constraint my_sql_advice_id_ADVICE_ID_fk foreign key(my_sql_advice_id) references my_sql_advice(ADVICE_ID);
+
 # Dumping structure for table myapp.eclipseAdvice
 DROP TABLE IF EXISTS `eclipse_advice`;
 CREATE TABLE IF NOT EXISTS `eclipse_advice` (
@@ -38,6 +77,19 @@ CREATE TABLE IF NOT EXISTS `eclipse_advice` (
   `ADVICE_DESCRIPTION` text NOT NULL,
   PRIMARY KEY (`ADVICE_ID`)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci COMMENT='Contains information about eclipse_advices';
+
+# Dumping structure for table my_life_dtb.eclipse_advices_attachments
+DROP TABLE IF EXISTS `eclipse_advices_attachments`;
+CREATE TABLE IF NOT EXISTS `eclipse_advices_attachments` (
+	`id` int(10) NOT NULL AUTO_INCREMENT,
+	`file_name` varchar(500) NOT NULL,
+	`eclipse_advice_id` int(10) NOT NULL,
+	PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci COMMENT='Contains information about eclipse_advices_attachments';
+
+# Creating foreign key for tab my_life_dtb.eclipse_advices_attachments.eclipse_advice_id -> my_life_dtb.eclipse_advice.ADVICE_ID
+alter table eclipse_advices_attachments
+add constraint eclipse_advice_id_ADVICE_ID_fk foreign key(eclipse_advice_id) references eclipse_advice(ADVICE_ID);
 
 # Dumping structure for table myapp.windowsAdvice
 DROP TABLE IF EXISTS `windows_advice`;
@@ -129,23 +181,42 @@ add constraint c_advice_id_ADVICE_ID_fk foreign key(c_advice_id) references c_ad
 
 # Dumping structure for spring security tables
 
-create table users(
-	username varchar(50) not null primary key,
-	password varchar(100) not null,
-	enabled boolean not null
-);
+drop table if exists users;
+create table if not exists users(
+id int not null auto_increment,
+username varchar(50) not null,
+password varchar(100) not null,
+enabled boolean not null,
+primary key(id)
+) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
-create table authorities (
-	username varchar(50) not null,
-	authority varchar(50) not null,
-	constraint fk_authorities_users foreign key(username) references users(username)
-);
+drop table if exists authorities;
+create table if not exists authorities (
+id int not null auto_increment primary key,
+username varchar(50) not null,
+authority varchar(50) not null,
+constraint fk_authorities_users foreign key(id) references users(id)
+) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 create unique index ix_auth_username on authorities (username,authority);
 
-# Example insert into spring security tables (encrypted password is: admin@123)
+# Example insert into spring security tables (encrypted password is: user)
 
-insert into users(username,password,enabled)
-	values('admin','$2a$10$hbxecwitQQ.dDT4JOFzQAulNySFwEpaFLw38jda6Td.Y/cOiRzDFu',true);
-insert into authorities(username,authority) 
-	values('admin','ROLE_ADMIN');
+insert into users(id,username,password,enabled)
+	values(null,'user','$2a$10$b2SzVGgMUgtSQlrQ1Ht1puOB3A4MM98wrq9eboDnH.GUNAdxqbB7i',true);
+insert into authorities(id, username,authority) 
+	values(null,'user','ROLE_USER');
+	
+# Example insert into spring security tables (encrypted password is: admin)
+
+insert into users(id,username,password,enabled)
+	values(null,'admin','$2a$10$4VNlXv/TDHAzYGyu7caxWuOvpmn05UJ8aO5Sk4psbnhJ7wa8qeccy',true);
+insert into authorities(id,username,authority) 
+	values(null,'admin','ROLE_ADMIN');
+	
+# Example insert into spring security tables (encrypted password is: superadmin)
+
+insert into users(id,username,password,enabled)
+	values(null,'superadmin','$2a$10$uTxsM6mTsjdYfWuuOtrFkOjG4zGCfJQqkIjpFRQ3MfUVEHHZhVfP.',true);
+insert into authorities(id,username,authority) 
+	values(null,'superadmin','ROLE_SUPERADMIN');

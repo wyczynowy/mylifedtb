@@ -4,6 +4,7 @@ public class CAdviceAttachment {
 	private int id;
 	private String fileName;
 	private int cAdviceId;
+	
 	public int getId() {
 		return id;
 	}

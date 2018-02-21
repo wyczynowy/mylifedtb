@@ -11,7 +11,11 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 </head>
 <body style="background-color: #ffffff;">
-<%@include file="includes/header.jsp" %>
+<%@include file="includes/header_top.jsp" %>
+	<div class="horizontal-center" style="width: 20%; top: 20; margin: 0 auto;">
+	<h1><span class="label label-default">My Life database </span></h1>
+	</div>
+<%@include file="includes/header_bottom.jsp" %>
 
 	<div style=" width: 10%; height: 100%; min-width: 300px; margin: 0 auto;">
 		<div style="height: 10%; min-height: 410px; padding-top: 10vh; margin: 0 auto;">

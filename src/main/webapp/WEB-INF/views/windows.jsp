@@ -15,13 +15,16 @@
 </head>
 <body style="min-width: 1024px;">
 
-	<%@include file="includes/header.jsp" %>
+	<%@include file="includes/header_top.jsp" %>
 
 	<div class="row">
 		<div class="horizontal-center" style="width: 13%; margin: 0 auto;">
 			<h1><span class="label label-info">Windows</span></h1>
 		</div>
 	</div>
+	
+	<%@include file="includes/header_bottom.jsp" %>
+	
 	<div class="row"><br/></div>
 
 	<div class="row">
@@ -32,7 +35,7 @@
 		</div>
 		<div class="col-sm-8">
 			<div class="row">
-				<security:authorize access="hasRole('ROLE_ADMIN')">	
+				<security:authorize access="hasRole('ROLE_ADMIN') or hasRole('ROLE_SUPERADMIN')">	
 					<div class="col-lg-3"><button class="btn btn-success" onclick="window.location.href='${pageContext.request.contextPath}/windows/addnote'">Dodaj notatke +</button></div>
 				</security:authorize>
 			</div>
@@ -43,8 +46,10 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<div class="panel-title">
-									<security:authorize access="hasRole('ROLE_ADMIN')">				
+									<security:authorize access="hasRole('ROLE_SUPERADMIN')">				
 										<button class="btn btn-danger btn-xs" onclick="window.location.href='${pageContext.request.contextPath}/windows/deleteNote?adviceId=${advice.id}'">Usun</button>
+									</security:authorize>
+									<security:authorize access="hasRole('ROLE_SUPERADMIN') or hasRole('ROLE_ADMIN')">
 										<button class="btn btn-warning btn-xs" onclick="window.location.href='${pageContext.request.contextPath}/windows/editNote?adviceId=${advice.id}'">Edytuj</button>				
 									</security:authorize>
 									<a data-toggle="collapse" data-parent="#accordion" href="#${advice.id}">${advice.adviceName}</a>
@@ -52,12 +57,8 @@
 							</div>
 							<div id="${advice.id}" class="panel-collapse collapse">
 								<div class="panel-body">
-								
-									<TEXTAREA rows="5" class="form-control">
-										${advice.adviceDescription}
-									</TEXTAREA>
-								
-									<!-- ${advice.adviceDescription} --><br>Załączniki:<br>
+									<TEXTAREA style="text-align: left; white-space: normal;" rows="5" class="form-control">${advice.adviceDescription}</TEXTAREA>	
+									<br>Załączniki:<br>
 									<c:forEach var="attachment" items="${windowsAdvicesAttachments}">
 										<c:if test="${attachment.windowsAdviceId == advice.id}">
 											<a href="${pageContext.request.contextPath}${relativeUrlToFiles}${attachment.fileName}" target="_blank">${attachment.fileName}<br></a>

@@ -20,8 +20,7 @@ public class ElectronicsNoteServiceImpl implements ElectronicsNoteService {
 	@Override
 	@Transactional
 	public int createNewNote(ElectronicsGeneralAdvice ega) throws Exception {
-		myElectronicsNoteDao.createNewNote(ega);
-		return 0;
+		return myElectronicsNoteDao.createNewNote(ega);
 	}
 
 	@Override
