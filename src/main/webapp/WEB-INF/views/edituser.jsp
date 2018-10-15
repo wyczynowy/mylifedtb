@@ -56,8 +56,8 @@
 			  </select>
 			</div>
 			 			
-			 <input class="btn btn-success" type="submit" value = "Zapisz" />
-			 <input class="btn btn-warning" type="button" value = "Wróć" onclick="window.location.href='${pageContext.request.contextPath}/additional/'"/>
+			 <input class="btn btn-warning" type="submit" value = "Zapisz" />
+			 <input class="btn btn-success" type="button" value = "Wróć" onclick="window.location.href='${pageContext.request.contextPath}/additional/'"/>
 			</form:form>
 		</div>
 </div>

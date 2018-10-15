@@ -3,6 +3,8 @@ package com.electroline.myapp;
 import java.util.Locale;
 import java.util.Map;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,8 +43,14 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/logout")
-	public String looutin(@RequestParam Map<String, String> params) {
+	public String logout(@RequestParam Map<String, String> params) {
 		return "login";
 	}
 	
+	@RequestMapping(value = "/message")
+	public ResponseEntity<String> message(@RequestParam Map<String, String> params) throws Exception {
+		String message = "{ \"name\":\"John\", \"age\":30, \"occupation\":null }";
+		System.out.println("id=" + params.get("id") + " name = " +params.get("name") + ", surname = " +params.get("surname"));
+		return new ResponseEntity<String>(message, HttpStatus.OK);
+	}
 }

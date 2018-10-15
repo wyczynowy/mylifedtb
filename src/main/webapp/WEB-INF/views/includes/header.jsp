@@ -37,7 +37,7 @@
 	      <a class="navbar-brand" href="${pageContext.request.contextPath}/">Electroline</a>
 	    </div>
 	    <ul class="nav navbar-nav">
-	      <li class="active"><a href="${pageContext.request.contextPath}/">Home</a></li>
+	      <li><a href="${pageContext.request.contextPath}/">Home</a></li>
 			<li class="dropdown">
 			  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Systemy operacyjne
 			  <span class="caret"></span></a>

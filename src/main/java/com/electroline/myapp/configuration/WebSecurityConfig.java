@@ -44,11 +44,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //			.httpBasic();
 	}
 
-
-//  @Override
-//  protected void configure(HttpSecurity http) throws Exception {
-//	    http.authorizeRequests().anyRequest().hasAnyRole("ADMIN", "USER")
-//	    .and()
-//	    .httpBasic(); // Authenticate users with HTTP basic authentication
-//  }
 }

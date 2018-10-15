@@ -8,10 +8,10 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="Shortcut icon" href="${pageContext.request.contextPath}/resources/pictures/BATI_LOGO_KULA_RED_bez_tla.ico" />
-	<title>additional</title>
+	<!-- <title>additional</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 </head>
 <body>
 	<%@include file="includes/header_top.jsp" %>
@@ -37,8 +37,8 @@
 								<!-- <div class="panel-title"> -->
 									<div style="display: inline;" class="row">
 										<div style="display: inline" class="col-lg-3">
-											<button class="btn btn-danger btn-sm" onclick="window.location.href='${pageContext.request.contextPath}/additional/deleteuser?userId=${user.userId}'">Usun</button>
-											<button class="btn btn-warning btn-sm" onclick="window.location.href='${pageContext.request.contextPath}/additional/edituser?userId=${user.userId}'">Edytuj</button>
+											<button class="btn btn-danger btn-xs" onclick="window.location.href='${pageContext.request.contextPath}/additional/deleteuser?userId=${user.userId}'">Usun</button>
+											<button class="btn btn-warning btn-xs" onclick="window.location.href='${pageContext.request.contextPath}/additional/edituser?userId=${user.userId}'">Edytuj</button>
 										</div>
 										<div style="display: inline" class="col-lg-3">
 											Login: <span style="font-size: 16px; font-weight: 600">${user.username}</span>

@@ -50,16 +50,6 @@ public class SpringMvcConfiguration implements WebMvcConfigurer{
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
 	
-//	@Bean(name = "bCryptPasswordEncoder")
-//	public static BCryptPasswordEncoder createBCryptPasswordEncoder() {
-//		return new BCryptPasswordEncoder();
-//	}
-	
-//	@Bean
-//	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-//		return new PropertySourcesPlaceholderConfigurer();
-//	}
-	
 	// Bean name must be "multipartResolver", by default Spring uses method name as bean name.
     @Bean
     public MultipartResolver multipartResolver() {

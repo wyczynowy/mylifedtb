@@ -1,0 +1,1 @@
+2018-02-26_20-19-47: FileLogger() -> Start logging
